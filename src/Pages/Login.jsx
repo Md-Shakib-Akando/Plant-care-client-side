@@ -1,7 +1,45 @@
-import React from 'react';
+import React, { use } from 'react';
 import Img from '../assets/RegisterImg.jpg';
-import { Link } from 'react-router';
+import { Link, useLocation, useNavigate } from 'react-router';
+import { AuthContext } from '../AuthContext';
+import Swal from 'sweetalert2';
 const Login = () => {
+    const { userLogIn,setLoading,setUser } = use(AuthContext);
+    const location = useLocation();
+      const navigate = useNavigate();
+    const handleLogIn = (e) => {
+        e.preventDefault();
+        setLoading(true);
+        const form = e.target;
+        const formData = new FormData(form);
+        const { email, password } = Object.fromEntries(formData.entries());
+        userLogIn(email, password)
+            .then(result => {
+                 const user = result.user;
+                setUser(user);
+                Swal.fire({
+
+                    icon: "success",
+                    title: "LogIn successful.",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+                 navigate(`${location.state ? location.state : '/'}`);
+            }).catch(error => {
+                console.error(error);
+
+                Swal.fire({
+
+                    icon: "error",
+                    title: "Oops...",
+                    text: "Invalid email or password",
+                    
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            }).finally(() => setLoading(false));
+
+    }
     return (
         <>
             <div className=" min-h-[calc(100vh-144px)]  bg-gray-100">
@@ -13,24 +51,22 @@ const Login = () => {
                             alt="Register"
                             className="  w-full h-[775px]  object-cover"
                         />
-                        <div className="absolute " />
-                        <div className="absolute bottom-0 left-0 right-0 p-8 text-white">
-                            <h2 className="text-3xl font-bold mb-4">Join PlantPal 🌱</h2>
-                            <p className="text-lg">Grow with your green companions.</p>
-                        </div>
+                       
+                        
                     </div>
 
 
                     <div className="w-full h-full mx-auto lg:w-1/2 p-8 md:p-12">
                         <h3 className="text-2xl font-bold text-gray-800 mb-6">SIGN IN</h3>
 
-                        <form className="space-y-6">
+                        <form onSubmit={handleLogIn} className="space-y-6">
 
 
                             <div>
                                 <label className="block text-sm mb-2">Email Address</label>
                                 <input
                                     type="email"
+                                    name='email'
                                     className="w-full px-4 py-3 border rounded-lg"
                                     placeholder="Enter your email"
                                     required
@@ -41,6 +77,7 @@ const Login = () => {
                                 <label className="block text-sm mb-2">Password</label>
                                 <input
                                     type="password"
+                                    name='password'
                                     className="w-full px-4 py-3 border rounded-lg"
                                     placeholder="Enter a strong password"
                                     required
@@ -110,5 +147,4 @@ const Login = () => {
         </>
     );
 };
-
 export default Login;

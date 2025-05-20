@@ -1,16 +1,19 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { NavLink } from 'react-router';
 import { GiTreehouse } from "react-icons/gi";
+import { AuthContext } from '../../AuthContext';
+import { CgProfile } from 'react-icons/cg';
 
-const NavItem=<>
-        <NavLink to='/' ><li className='px-2 py-1 rounded-sm'>Home</li></NavLink>
-        <NavLink to='All-Plants' ><li className='px-2 py-1 rounded-sm'>All-Plants</li></NavLink>
-        <NavLink to='Add-Plants' ><li className='px-2 py-1 rounded-sm'>Add-Plants</li></NavLink>
-        <NavLink to='My-Plants' ><li className='px-2 py-1 rounded-sm'>My-Plants</li></NavLink>
-       
+const NavItem = <>
+    <NavLink to='/' ><li className='px-2 py-1 rounded-sm'>Home</li></NavLink>
+    <NavLink to='All-Plants' ><li className='px-2 py-1 rounded-sm'>All-Plants</li></NavLink>
+    <NavLink to='Add-Plants' ><li className='px-2 py-1 rounded-sm'>Add-Plants</li></NavLink>
+    <NavLink to='My-Plants' ><li className='px-2 py-1 rounded-sm'>My-Plants</li></NavLink>
+
 </>
 
 const Navbar = () => {
+    const { user } = useContext(AuthContext);
     return (
         <>
 
@@ -27,10 +30,31 @@ const Navbar = () => {
                         </ul>
                     </div>
                     <div className="navbar-end">
-                        <div className='hidden lg:flex gap-3'>
-                            <NavLink to='login'><button className="btn btn-outline outline-green-600 text-green-600 hover:bg-green-600 hover:text-white">Login</button></NavLink>
-                            <NavLink to='Register'><button className="btn btn-outline outline-green-600 text-green-600 hover:bg-green-600 hover:text-white">Register</button></NavLink>
-                        </div>
+
+                        {
+                            user ? (<div className='flex gap-1'>
+                                <NavLink to='/profile' >{
+                                    user.photoURL ? <img
+                                        src={user.photoURL}
+                                        alt="Profile"
+                                        className="w-10 h-10 rounded-full border-2 border-blue-500"
+                                    /> : <CgProfile size={32} />
+                                }</NavLink>  <div>
+                                    <button className='hidden lg:flex btn btn-outline btn-secondary w-full'>Log Out</button>
+                                </div>
+                            </div>) : (<>
+                                <div className='hidden lg:flex gap-3'>
+                                    <NavLink to='login'><button className="btn btn-outline outline-green-600 text-green-600 hover:bg-green-600 hover:text-white">Login</button></NavLink>
+                                    <NavLink to='Register'><button className="btn btn-outline outline-green-600 text-green-600 hover:bg-green-600 hover:text-white">Register</button></NavLink>
+                                </div>
+                            </>)
+                        }
+
+
+
+
+
+
                         <div className="dropdown">
                             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
                                 <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"> <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /> </svg>

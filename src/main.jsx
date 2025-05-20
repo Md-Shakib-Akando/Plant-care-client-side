@@ -15,6 +15,7 @@ import MyPlants from './Pages/MyPlants.jsx';
 import Login from './Pages/Login.jsx';
 import Register from './Pages/Register.jsx';
 import AllPlants from './Pages/AllPlants.jsx';
+import AuthProvider from './AuthProvider.jsx';
 
 const router = createBrowserRouter([
   {
@@ -46,6 +47,8 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-   <RouterProvider router={router}></RouterProvider>
+  <AuthProvider>
+     <RouterProvider router={router}></RouterProvider>
+  </AuthProvider>
   </StrictMode>,
 )
