@@ -18,6 +18,8 @@ const Register = () => {
         const {name,photo ,email, password, ...rest } = Object.fromEntries(formData.entries());
         const userProfile = {
             email,
+            name,
+            photo,
             ...rest,
         }
         console.log(email, password, userProfile);
