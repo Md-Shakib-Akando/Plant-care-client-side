@@ -1,8 +1,11 @@
 import React, { useContext } from 'react';
-import { NavLink } from 'react-router';
+import { NavLink, useNavigate } from 'react-router';
 import { GiTreehouse } from "react-icons/gi";
 import { AuthContext } from '../../AuthContext';
 import { CgProfile } from 'react-icons/cg';
+import Swal from 'sweetalert2';
+import { Tooltip as ReactTooltip } from 'react-tooltip'
+
 
 const NavItem = <>
     <NavLink to='/' ><li className='px-2 py-1 rounded-sm'>Home</li></NavLink>
@@ -13,7 +16,27 @@ const NavItem = <>
 </>
 
 const Navbar = () => {
-    const { user } = useContext(AuthContext);
+    const { user, setUser, handleLogOut } = useContext(AuthContext);
+    const navigate = useNavigate();
+    const handleGoogleSingOut = () => {
+        handleLogOut()
+            .then(result => {
+                console.log(result)
+                Swal.fire({
+
+                    icon: "success",
+                    title: "LogOut successful.",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+                setUser(null);
+
+
+                navigate('/login')
+            }).catch(error => {
+                console.log(error)
+            })
+    }
     return (
         <>
 
@@ -33,14 +56,17 @@ const Navbar = () => {
 
                         {
                             user ? (<div className='flex gap-1'>
-                                <NavLink to='/profile' >{
+                                {
                                     user.photoURL ? <img
                                         src={user.photoURL}
                                         alt="Profile"
                                         className="w-10 h-10 rounded-full border-2 border-blue-500"
-                                    /> : <CgProfile size={32} />
-                                }</NavLink>  <div>
-                                    <button className='hidden lg:flex btn btn-outline btn-secondary w-full'>Log Out</button>
+                                        data-tooltip-id="profile-tooltip"
+                                        data-tooltip-content={user?.displayName || 'No Name'}
+                                    />  : <CgProfile size={32} />
+                                } <div>
+                                    <button onClick={handleGoogleSingOut} className='hidden lg:flex btn btn-outline btn-secondary w-full'>Log Out</button>
+                                   
                                 </div>
                             </div>) : (<>
                                 <div className='hidden lg:flex gap-3'>
@@ -49,8 +75,7 @@ const Navbar = () => {
                                 </div>
                             </>)
                         }
-
-
+                         <ReactTooltip id="profile-tooltip" place="left" />
 
 
 

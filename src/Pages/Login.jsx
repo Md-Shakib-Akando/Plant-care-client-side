@@ -3,10 +3,30 @@ import Img from '../assets/RegisterImg.jpg';
 import { Link, useLocation, useNavigate } from 'react-router';
 import { AuthContext } from '../AuthContext';
 import Swal from 'sweetalert2';
+import { FcGoogle } from 'react-icons/fc';
 const Login = () => {
-    const { userLogIn,setLoading,setUser } = use(AuthContext);
+    const { userLogIn,setLoading,setUser,handleGoogle } = use(AuthContext);
     const location = useLocation();
       const navigate = useNavigate();
+
+      const handleGoogleSingIn=()=>{
+        handleGoogle()
+          .then(result => {
+
+               setUser(result.user)
+               
+                Swal.fire({
+
+                    icon: "success",
+                    title: "LogIn successful.",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+                navigate(`${location.state ? location.state : '/'}`);
+            }).catch(error => {
+                console.log(error)
+            })
+      }
     const handleLogIn = (e) => {
         e.preventDefault();
         setLoading(true);
@@ -125,9 +145,10 @@ const Login = () => {
 
                             <button
                                 type="button"
-                                className="flex w-full items-center justify-center px-4 py-3 border border-gray-300 rounded-lg hover:bg-gray-50 !rounded-button whitespace-nowrap"
+                                onClick={handleGoogleSingIn}
+                                className="flex  w-full items-center justify-center px-4 py-3 border border-green-600 text-green-600 rounded-lg hover:bg-green-600 cursor-pointer hover:text-white !rounded-button whitespace-nowrap"
                             >
-                                <i className="fab fa-google text-xl mr-2"></i>
+                                <FcGoogle size={32} className='mr-5'></FcGoogle>
                                 Google
                             </button>
 
