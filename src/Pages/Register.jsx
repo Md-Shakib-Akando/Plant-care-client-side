@@ -82,6 +82,7 @@ const Register = () => {
                                 </div>
                             </div>
 
+
                             <button
                                 type="button"
                                 className="flex w-full items-center justify-center px-4 py-3 border border-gray-300 rounded-lg hover:bg-gray-50 !rounded-button whitespace-nowrap"
