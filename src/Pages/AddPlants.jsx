@@ -72,7 +72,7 @@ const AddPlants = () => {
 
                             <div className="flex flex-col w-xs lg:w-md     p-4">
                                 <label className="label">Plant Name</label>
-                                <input type="text" name='Plant-Name' className="input w-full" placeholder="enter your plant name" />
+                                <input type="text" name='PlantName' className="input w-full" placeholder="enter your plant name" />
 
                             </div>
                             <div className="form-control flex flex-col w-full p-4">
@@ -81,9 +81,9 @@ const AddPlants = () => {
                                 </label>
                                 <select name="category"  required className="select select-bordered w-full">
                                     <option disabled  value=''>Select Category</option>
-                                    <option value="easy">flowering</option>
-                                    <option value="moderate"> fern</option>
-                                    <option value="difficult">succulent</option>
+                                    <option value="flowering">flowering</option>
+                                    <option value="fern"> fern</option>
+                                    <option value="succulent">succulent</option>
                                 </select>
                             </div>
                             <div className="flex flex-col w-xs lg:w-md  p-4">

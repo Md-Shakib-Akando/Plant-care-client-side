@@ -27,7 +27,9 @@ const router = createBrowserRouter([
 
       },
       {
-        path:'All-Plants', Component:AllPlants,
+        path:'All-Plants',
+        loader:()=>fetch('http://localhost:3000/plants'),
+         Component:AllPlants,
       },
       {
         path:'Add-Plants', Component:AddPlants,
