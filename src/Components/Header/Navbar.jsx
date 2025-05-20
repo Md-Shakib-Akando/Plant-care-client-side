@@ -28,8 +28,8 @@ const Navbar = () => {
                     </div>
                     <div className="navbar-end">
                         <div className='hidden lg:flex gap-3'>
-                            <NavLink><button className="btn btn-outline outline-green-600 text-green-600 hover:bg-green-600 hover:text-white">Login</button></NavLink>
-                            <NavLink><button className="btn btn-outline outline-green-600 text-green-600 hover:bg-green-600 hover:text-white">Register</button></NavLink>
+                            <NavLink to='login'><button className="btn btn-outline outline-green-600 text-green-600 hover:bg-green-600 hover:text-white">Login</button></NavLink>
+                            <NavLink to='Register'><button className="btn btn-outline outline-green-600 text-green-600 hover:bg-green-600 hover:text-white">Register</button></NavLink>
                         </div>
                         <div className="dropdown">
                             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -39,8 +39,8 @@ const Navbar = () => {
                                 tabIndex={0}
                                 className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 -right-6 w-52 p-2 shadow">
                                 {NavItem}
-                                <NavLink><button>Login</button></NavLink>
-                                <NavLink><button>Register</button></NavLink>
+                                <NavLink to='login'><button>Login</button></NavLink>
+                                <NavLink to='Register'><button>Register</button></NavLink>
                             </ul>
 
                         </div>
