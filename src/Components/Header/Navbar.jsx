@@ -65,7 +65,7 @@ const Navbar = () => {
                                         data-tooltip-content={user?.displayName || 'No Name'}
                                     />  : <CgProfile size={32} />
                                 } <div>
-                                    <button onClick={handleGoogleSingOut} className='hidden lg:flex btn btn-outline btn-secondary w-full'>Log Out</button>
+                                    <button onClick={handleGoogleSingOut} className="btn hidden lg:flex btn-outline outline-green-600 text-green-600 hover:bg-green-600 hover:text-white">Log Out</button>
                                    
                                 </div>
                             </div>) : (<>
@@ -88,8 +88,14 @@ const Navbar = () => {
                                 tabIndex={0}
                                 className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 -right-6 w-52 p-2 shadow">
                                 {NavItem}
-                                <NavLink to='login'><button>Login</button></NavLink>
-                                <NavLink to='Register'><button>Register</button></NavLink>
+                                {
+                                    user?(  <button onClick={handleGoogleSingOut} className="btn  btn-outline outline-green-600 text-green-600 hover:bg-green-600 hover:text-white">Log Out</button>):(<>
+                                    <div className='flex gap-1 mt-1'>
+                                        <NavLink to='login'><button className="btn btn-outline outline-green-600 text-green-600 hover:bg-green-600 hover:text-white">Login</button></NavLink>
+                                    <NavLink to='Register'><button className="btn btn-outline outline-green-600 text-green-600 hover:bg-green-600 hover:text-white">Register</button></NavLink>
+                                    </div>
+                                    </>)
+                                }
                             </ul>
 
                         </div>
