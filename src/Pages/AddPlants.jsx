@@ -10,7 +10,7 @@ const AddPlants = () => {
         const form = e.target;
         const formData = new FormData(form);
         const PlantData = Object.fromEntries(formData.entries());
-        console.log(PlantData)
+        
         fetch('http://localhost:3000/plants', {
             method: 'POST',
             headers: {
@@ -20,14 +20,16 @@ const AddPlants = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data)
-                Swal.fire({
+                if(data.insertedId){
+                    Swal.fire({
 
                     icon: "success",
                     title: "Plant Added successfully",
                     showConfirmButton: false,
                     timer: 1500
                 });
+                }
+                
             })
         form.reset();
     }

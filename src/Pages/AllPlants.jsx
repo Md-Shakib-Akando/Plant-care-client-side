@@ -8,7 +8,7 @@ const AllPlants = () => {
   const careLevelRank = {
     easy: 1,
     moderate: 2,
-    difficult: 7,
+    difficult: 3,
   };
 
   
@@ -21,7 +21,7 @@ const AllPlants = () => {
 
             <div className="overflow-x-auto min-h-[calc(100vh-144px)]">
                 <table className="min-w-full my-7 divide-y  divide-gray-200">
-                    <thead className="bg-gray-50 ">
+                    <thead className="bg-gray-100 ">
                         <tr >
                            
                             <th

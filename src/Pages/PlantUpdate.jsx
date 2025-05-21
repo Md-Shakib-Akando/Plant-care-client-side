@@ -1,11 +1,36 @@
 import React from 'react';
 import { useLoaderData } from 'react-router';
+import Swal from 'sweetalert2';
 
 const PlantUpdate = () => {
-    const {PlantName,image, wateringFrequency, category, HealthStatus, nextWatering, lastWatered, careLevel, Description}=useLoaderData();
+    const {_id,PlantName,image, wateringFrequency, category, HealthStatus, nextWatering, lastWatered, careLevel, Description}=useLoaderData();
     
     const handleUpdatePlant=e=>{
         e.preventDefault();
+        const form= e.target;
+        const formData= new FormData(form);
+        const updatePlant=Object.fromEntries(formData.entries());
+
+        fetch(`http://localhost:3000/plants/${_id}`,{
+            method:'PUT',
+            headers:{
+                'content-type':'application/json'
+            },
+            body:JSON.stringify(updatePlant)
+        })
+        .then(res=>res.json())
+        .then(data=>{
+            if(data.modifiedCount){
+                Swal.fire({
+
+                    icon: "success",
+                    title: "Plant Update successfully",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            }
+        })
+
 
     }
     return (
@@ -83,7 +108,7 @@ const PlantUpdate = () => {
                                 type="submit"
                                 className="w-full font-semibold text-lg cursor-pointer bg-green-600 text-white py-3 rounded-lg hover:bg-green-700"
                             >
-                                Add
+                                Update
                             </button>
                         </div>
                     </form>
