@@ -18,6 +18,7 @@ import AllPlants from './Pages/AllPlants.jsx';
 import AuthProvider from './AuthProvider.jsx';
 import Details from './Pages/Details.jsx';
 import PrivateRout from './PrivateRout/PrivateRout.jsx';
+import PlantUpdate from './Pages/PlantUpdate.jsx';
 
 const router = createBrowserRouter([
   {
@@ -64,6 +65,10 @@ const router = createBrowserRouter([
           </PrivateRout>
         ),
         loader:()=>fetch('http://localhost:3000/plants')
+      },
+      {
+        path:'/updatePlant/:id',
+        Component:PlantUpdate,
       }
     ]
   },
