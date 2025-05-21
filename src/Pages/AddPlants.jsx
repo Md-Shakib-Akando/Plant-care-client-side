@@ -31,17 +31,7 @@ const AddPlants = () => {
             })
         form.reset();
     }
-    if (!user) {
-        return (
-            <div className="min-h-screen flex justify-center items-center">
-                <div className="text-center">
-                    <h2 className="text-2xl lg:text-5xl font-semibold mb-4 text-red-500">NOT FOUND</h2>
-                    <p className="text-lg">You must be logged in to add a plant.</p>
-                    <Link to='/login'><button className="mt-4 btn btn-primary">Go to Login</button></Link>
-                </div>
-            </div>
-        );
-    }
+    
     return (
         <>
             <div className='min-h-[calc(100vh-144px)]'>

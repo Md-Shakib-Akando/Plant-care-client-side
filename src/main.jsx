@@ -17,6 +17,7 @@ import Register from './Pages/Register.jsx';
 import AllPlants from './Pages/AllPlants.jsx';
 import AuthProvider from './AuthProvider.jsx';
 import Details from './Pages/Details.jsx';
+import PrivateRout from './PrivateRout/PrivateRout.jsx';
 
 const router = createBrowserRouter([
   {
@@ -33,10 +34,21 @@ const router = createBrowserRouter([
          Component:AllPlants,
       },
       {
-        path:'Add-Plants', Component:AddPlants,
+        path:'Add-Plants',
+        element:(
+          <PrivateRout>
+            <AddPlants></AddPlants>
+          </PrivateRout>
+        ),
       },
       {
-        path:'My-Plants', Component:MyPlants,
+        path:'My-Plants',
+        loader: () => fetch('http://localhost:3000/plants').then(res => res.json()),
+         element:(
+          <PrivateRout>
+            <MyPlants></MyPlants>
+          </PrivateRout>
+        ),
       },
       {
         path:'Login', Component:Login,
@@ -46,7 +58,11 @@ const router = createBrowserRouter([
       },
       {
         path:'/details/:id',
-        Component:Details,
+        element:(
+          <PrivateRout>
+            <Details></Details>
+          </PrivateRout>
+        ),
         loader:()=>fetch('http://localhost:3000/plants')
       }
     ]
