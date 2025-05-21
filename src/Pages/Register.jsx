@@ -22,7 +22,7 @@ const Register = () => {
             photo,
             ...rest,
         }
-        console.log(email, password, userProfile);
+        
         setError('');
 
         const Upass = /[A-Z]/.test(password);
@@ -56,6 +56,7 @@ const Register = () => {
                 updateProfile(result.user, { displayName: name, photoURL: photo })
                     .then(() => {
                         setUser({ ...result.user, displayName: name, photoURL: photo });
+                        console.log(result.user);
                         Swal.fire({
 
                             icon: "success",

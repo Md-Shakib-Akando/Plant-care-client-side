@@ -16,6 +16,7 @@ import Login from './Pages/Login.jsx';
 import Register from './Pages/Register.jsx';
 import AllPlants from './Pages/AllPlants.jsx';
 import AuthProvider from './AuthProvider.jsx';
+import Details from './Pages/Details.jsx';
 
 const router = createBrowserRouter([
   {
@@ -43,6 +44,11 @@ const router = createBrowserRouter([
       {
         path:'Register', Component:Register,
       },
+      {
+        path:'/details/:id',
+        Component:Details,
+        loader:()=>fetch('http://localhost:3000/plants')
+      }
     ]
   },
 ]);

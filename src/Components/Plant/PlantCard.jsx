@@ -72,9 +72,9 @@ const PlantCard = ({plant}) => {
                       </td>
                       
                       <td className="px-6 py-4 text-center whitespace-nowrap text-sm font-medium">
-                        <Link>
+                        <Link to={`/details/${_id}`}>
                         <button className="btn text-green-600 hover:text-green-900 mr-3 cursor-pointer  whitespace-nowrap">
-                          Plant Details
+                          View Details
                         </button>
                         </Link>
                         

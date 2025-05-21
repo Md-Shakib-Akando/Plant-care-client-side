@@ -12,8 +12,9 @@ const Login = () => {
       const handleGoogleSingIn=()=>{
         handleGoogle()
           .then(result => {
-
-               setUser(result.user)
+                const user=result.user;
+                
+               setUser(user)
                
                 Swal.fire({
 
