@@ -8,7 +8,7 @@ const AllPlants = () => {
   const careLevelRank = {
     easy: 1,
     moderate: 2,
-    difficult: 3,
+    difficult: 7,
   };
 
   
@@ -20,55 +20,56 @@ const AllPlants = () => {
         <>
 
             <div className="overflow-x-auto min-h-[calc(100vh-144px)]">
-                <table className="min-w-full my-7 divide-y divide-gray-200">
-                    <thead className="bg-gray-50">
+                <table className="min-w-full my-7 divide-y  divide-gray-200">
+                    <thead className="bg-gray-50 ">
                         <tr >
+                           
                             <th
                                 scope="col"
-                                className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                                className="px-6 py-7 text-center  text-xs font-medium text-gray-500 uppercase tracking-wider"
                             >
-                                Plant
+                                Plant Name
                             </th>
                             <th
                                 scope="col"
-                                className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider"
+                                className="px-6 py-7 text-center text-xs font-medium text-gray-500 uppercase tracking-wider"
                             >
                                 Category
                             </th>
                             <th
                                 scope="col"
-                                className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider"
+                                className="px-6 py-7 text-center text-xs font-medium text-gray-500 uppercase tracking-wider"
                             >
                                 Care Level
                             </th>
                             <th
                                 scope="col"
-                                className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider"
+                                className="px-6 py-7 text-center text-xs font-medium text-gray-500 uppercase tracking-wider"
                             >
                                 Last Watered
                             </th>
                             <th
                                 scope="col"
-                                className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider"
+                                className="px-6 py-7 text-center text-xs font-medium text-gray-500 uppercase tracking-wider"
                             >
                                 Next Watering
                             </th>
                             <th
                                 scope="col"
-                                className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider"
+                                className="px-6 py-7 text-center text-xs font-medium text-gray-500 uppercase tracking-wider"
                             >
                                 Water Frequency
                             </th>
                             <th
                                 scope="col"
-                                className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider"
+                                className="px-6 py-7 text-center text-xs font-medium text-gray-500 uppercase tracking-wider"
                             >
                                 Health
                             </th>
 
                             <th
                                 scope="col"
-                                className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider"
+                                className="px-6 py-7 text-center text-xs font-medium text-gray-500 uppercase tracking-wider"
                             >
 
                             </th>

@@ -21,7 +21,7 @@ const Details = () => {
                     </div>
 
                     
-                    <div className="md:w-1/2 space-y-6">
+                    <div className="md:w-1/2 space-y-2 md:space-y-6">
                         <h2 className="text-3xl font-bold text-green-700">{PlantName}</h2>
 
                         <p className="text-gray-600">

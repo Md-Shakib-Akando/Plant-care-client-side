@@ -17,11 +17,11 @@ const PlantCard = ({plant}) => {
                             <img
                               src={image}
                               alt=''
-                              className="h-full w-full object-cover"
+                              className="h-full w-full  object-cover"
                             />
                           </div>
                           <div className="ml-4">
-                            <div className="text-sm font-medium text-gray-900">
+                            <div className="text-sm text-center ml-10 font-medium text-gray-900">
                               {PlantName}
                             </div>
                             
