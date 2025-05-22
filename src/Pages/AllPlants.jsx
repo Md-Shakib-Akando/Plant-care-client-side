@@ -1,16 +1,46 @@
-import React, { useEffect } from 'react';
-import { useLoaderData } from 'react-router';
+import React, { useEffect, useState } from 'react';
+
 import PlantCard from '../Components/Plant/PlantCard';
 
 const AllPlants = () => {
-    const plants = useLoaderData();
-
+   
+    const [plants, setPlants] = useState([]);
+    const [sortBy, setSortBy] = useState("");
     useEffect(() => {
         document.title = 'PlantCare | AllPlant';
     }, [])
+    useEffect(() => {
+        const url = sortBy
+            ? `http://localhost:3000/plants-sorted?sortBy=${sortBy}`
+            : `http://localhost:3000/plants`;
+            
+ 
+        fetch(url)
+            .then(res => res.json())
+            .then(data => setPlants(data))
+            .catch(err => console.error(err));
+    }, [sortBy]);
+
+
 
     return (
         <>
+
+            <div className="flex items-center justify-center mt-8">
+                <h1 className='text-xl font-semibold mr-5'>Sort by: </h1>
+                <select
+                    value={sortBy}
+                    onChange={(e) => setSortBy(e.target.value)}
+
+                    className="select select-bordered"
+                >
+                    <option value="" disabled>
+                        -- Select Sort Option --
+                    </option>
+                    <option value="careLevel">Care Level</option>
+                    <option value="nextWatering">Next Watering</option>
+                </select>
+            </div>
 
             <div className="overflow-x-auto min-h-[calc(100vh-144px)]">
                 <table className="min-w-full my-7 divide-y  divide-gray-300">
