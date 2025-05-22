@@ -1,4 +1,4 @@
-import React, { use, useState } from 'react';
+import React, { use, useEffect, useState } from 'react';
 import Img from '../assets/RegisterImg.jpg';
 import { Link, useLocation, useNavigate } from 'react-router';
 import { AuthContext } from '../AuthContext';
@@ -79,6 +79,9 @@ const Register = () => {
 
 
     }
+    useEffect(()=>{
+                document.title='PlantCare | Register';
+            },[])
 return (
     <>
 

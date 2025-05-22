@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useLoaderData } from 'react-router';
 import Swal from 'sweetalert2';
 
@@ -33,6 +33,9 @@ const PlantUpdate = () => {
 
 
     }
+    useEffect(()=>{
+                document.title='PlantCare | UpdatePlant';
+            },[])
     return (
         <>
            <div className='min-h-[calc(100vh-144px)]'>

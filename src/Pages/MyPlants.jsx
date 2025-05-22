@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link, useLoaderData } from 'react-router';
 import { AuthContext } from '../AuthContext';
 import { MdDelete } from "react-icons/md";
@@ -46,7 +46,9 @@ const MyPlants = () => {
             }
         });
     }
-
+    useEffect(()=>{
+                document.title='PlantCare | MyPlant';
+            },[])
     return (
         <>
             <div className='min-h-[calc(100vh-225px)] my-10'>
@@ -62,7 +64,7 @@ const MyPlants = () => {
                             {
                                 userPlants.map(plant =>
                                     <div key={plant._id}>
-                                        <div className="flex flex-col gap-5 sm:flex-row sm:gap-16 p-4  md:p-5 sm:items-center bg-base-300 rounded-xl shadow-sm">
+                                        <div className="flex flex-col gap-5 sm:flex-row sm:gap-16 p-4  md:p-5 sm:items-center border-1 border-gray-300 rounded-xl shadow-sm">
                                             <figure className='sm:w-1/2 '>
                                                 <img
                                                     src={plant.image}

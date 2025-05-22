@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { AuthContext } from '../AuthContext';
 import { Link } from 'react-router';
 import Swal from 'sweetalert2';
@@ -10,7 +10,7 @@ const AddPlants = () => {
         const form = e.target;
         const formData = new FormData(form);
         const PlantData = Object.fromEntries(formData.entries());
-        
+
         fetch('http://localhost:3000/plants', {
             method: 'POST',
             headers: {
@@ -20,20 +20,23 @@ const AddPlants = () => {
         })
             .then(res => res.json())
             .then(data => {
-                if(data.insertedId){
+                if (data.insertedId) {
                     Swal.fire({
 
-                    icon: "success",
-                    title: "Plant Added successfully",
-                    showConfirmButton: false,
-                    timer: 1500
-                });
+                        icon: "success",
+                        title: "Plant Added successfully",
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
                 }
-                
+
             })
         form.reset();
     }
-    
+    useEffect(() => {
+        document.title = 'PlantCare | AddPlant';
+    }, [])
+
     return (
         <>
             <div className='min-h-[calc(100vh-144px)]'>
@@ -71,8 +74,8 @@ const AddPlants = () => {
                                 <label className="label">
                                     <span className="label-text font-medium">Category</span>
                                 </label>
-                                <select name="category"  required className="select select-bordered w-full">
-                                    <option disabled  value=''>Select Category</option>
+                                <select name="category" required className="select select-bordered w-full">
+                                    <option disabled value=''>Select Category</option>
                                     <option value="flowering">flowering</option>
                                     <option value="fern"> fern</option>
                                     <option value="succulent">succulent</option>
@@ -87,8 +90,8 @@ const AddPlants = () => {
                                 <label className="label">
                                     <span className="label-text font-medium">Care level</span>
                                 </label>
-                                <select name="careLevel"  required className="select select-bordered w-full">
-                                    <option disabled  value="">Select care level</option>
+                                <select name="careLevel" required className="select select-bordered w-full">
+                                    <option disabled value="">Select care level</option>
                                     <option value="easy">Easy</option>
                                     <option value="moderate">Moderate</option>
                                     <option value="difficult">Difficult</option>

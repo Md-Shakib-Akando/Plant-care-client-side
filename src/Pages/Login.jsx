@@ -1,21 +1,21 @@
-import React, { use } from 'react';
+import React, { use, useEffect } from 'react';
 import Img from '../assets/RegisterImg.jpg';
 import { Link, useLocation, useNavigate } from 'react-router';
 import { AuthContext } from '../AuthContext';
 import Swal from 'sweetalert2';
 import { FcGoogle } from 'react-icons/fc';
 const Login = () => {
-    const { userLogIn,setLoading,setUser,handleGoogle } = use(AuthContext);
+    const { userLogIn, setLoading, setUser, handleGoogle } = use(AuthContext);
     const location = useLocation();
-      const navigate = useNavigate();
+    const navigate = useNavigate();
 
-      const handleGoogleSingIn=()=>{
+    const handleGoogleSingIn = () => {
         handleGoogle()
-          .then(result => {
-                const user=result.user;
-                
-               setUser(user)
-               
+            .then(result => {
+                const user = result.user;
+
+                setUser(user)
+
                 Swal.fire({
 
                     icon: "success",
@@ -27,7 +27,7 @@ const Login = () => {
             }).catch(error => {
                 console.log(error)
             })
-      }
+    }
     const handleLogIn = (e) => {
         e.preventDefault();
         setLoading(true);
@@ -36,7 +36,7 @@ const Login = () => {
         const { email, password } = Object.fromEntries(formData.entries());
         userLogIn(email, password)
             .then(result => {
-                 const user = result.user;
+                const user = result.user;
                 setUser(user);
                 Swal.fire({
 
@@ -45,7 +45,7 @@ const Login = () => {
                     showConfirmButton: false,
                     timer: 1500
                 });
-                 navigate(`${location.state ? location.state : '/'}`);
+                navigate(`${location.state ? location.state : '/'}`);
             }).catch(error => {
                 console.error(error);
 
@@ -54,13 +54,16 @@ const Login = () => {
                     icon: "error",
                     title: "Oops...",
                     text: "Invalid email or password",
-                    
+
                     showConfirmButton: false,
                     timer: 1500
                 });
             }).finally(() => setLoading(false));
 
     }
+    useEffect(() => {
+        document.title = 'PlantCare | Login';
+    }, [])
     return (
         <>
             <div className=" min-h-[calc(100vh-144px)]  bg-gray-100">
@@ -72,8 +75,8 @@ const Login = () => {
                             alt="Register"
                             className="  w-full h-[775px]  object-cover"
                         />
-                       
-                        
+
+
                     </div>
 
 

@@ -19,6 +19,7 @@ import AuthProvider from './AuthProvider.jsx';
 import Details from './Pages/Details.jsx';
 import PrivateRout from './PrivateRout/PrivateRout.jsx';
 import PlantUpdate from './Pages/PlantUpdate.jsx';
+import Loading from './Components/Loading.jsx';
 
 const router = createBrowserRouter([
   {
@@ -26,12 +27,16 @@ const router = createBrowserRouter([
     Component:MainLayout,
     children:[
       {
-        index:true, Component:Home,
+        index:true,
+        loader:()=>fetch('http://localhost:3000/latest-plants'),
+        hydrateFallbackElement:<Loading></Loading>,
+       Component:Home,
 
       },
       {
         path:'All-Plants',
-        loader: () => fetch('http://localhost:3000/plants').then(res => res.json()),
+         loader: () => fetch('http://localhost:3000/plants-sorted'),
+         hydrateFallbackElement:<Loading></Loading>,
          Component:AllPlants,
       },
       {
@@ -45,6 +50,7 @@ const router = createBrowserRouter([
       {
         path:'My-Plants',
         loader: () => fetch('http://localhost:3000/plants').then(res => res.json()),
+        hydrateFallbackElement:<Loading></Loading>,
          element:(
           <PrivateRout>
             <MyPlants></MyPlants>
@@ -64,11 +70,13 @@ const router = createBrowserRouter([
             <Details></Details>
           </PrivateRout>
         ),
-        loader:()=>fetch('http://localhost:3000/plants')
+        loader:()=>fetch('http://localhost:3000/plants'),
+        hydrateFallbackElement:<Loading></Loading>,
       },
       {
         path:'/updatePlant/:id',
         loader: ({params})=>fetch(`http://localhost:3000/plants/${params.id}`),
+        hydrateFallbackElement:<Loading></Loading>,
         Component:PlantUpdate,
       }
     ]

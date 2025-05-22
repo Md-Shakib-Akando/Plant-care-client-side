@@ -57,7 +57,7 @@ const Navbar = () => {
             <div className="bg-base-100 shadow-sm">
                 <div className='navbar py-5 max-w-11/12 mx-auto'>
                     <div className="navbar-start space-x-0.5 ">
-                        <GiTreehouse size={38} className='text-green-600' />
+                        <img className='h-[50px] w-[50px]' src="/logo.png" alt="" />
 
                         <h1 className='text-xl md:text-2xl font-semibold text-green-600'>PlantCare</h1>
                     </div>
