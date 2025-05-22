@@ -8,9 +8,9 @@ const PlantCard = ({plant}) => {
     const formattedDate2 = format(new Date(lastWatered), 'dd/MM/yyyy');
     return (
         <>
-            <tbody className="bg-white divide-y divide-gray-200">
+            <tbody className="bg-base-300 divide-y divide-gray-200">
                   
-                    <tr key={_id} className="hover:bg-gray-50">
+                    <tr key={_id} className="hover:bg-base-100">
                       <td className="px-6 py-4 whitespace-nowrap">
                         <div className="flex items-center">
                           <div className="flex-shrink-0 h-10 w-10 rounded-full overflow-hidden">
@@ -21,7 +21,7 @@ const PlantCard = ({plant}) => {
                             />
                           </div>
                           <div className="ml-4">
-                            <div className="text-sm text-center ml-10 font-medium text-gray-900">
+                            <div className="text-sm text-center ml-10 font-medium ">
                               {PlantName}
                             </div>
                             

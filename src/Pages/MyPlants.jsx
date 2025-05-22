@@ -58,11 +58,11 @@ const MyPlants = () => {
                         <Link to='/Add-Plants'><button className='btn text-blue-500 border-blue-500 hover:bg-blue-500 hover:text-white '>Go to Add</button></Link>
                     </div>
                     ) : (
-                        <div className='grid grid-cols-1 xl:grid-cols-2 gap-5 lg:gap-8'>
+                        <div className=' grid grid-cols-1 xl:grid-cols-2 gap-5 lg:gap-8'>
                             {
                                 userPlants.map(plant =>
                                     <div key={plant._id}>
-                                        <div className="flex flex-col gap-5 sm:flex-row sm:gap-16 p-4  md:p-5 sm:items-center bg-base-100 shadow-sm">
+                                        <div className="flex flex-col gap-5 sm:flex-row sm:gap-16 p-4  md:p-5 sm:items-center bg-base-300 rounded-xl shadow-sm">
                                             <figure className='sm:w-1/2 '>
                                                 <img
                                                     src={plant.image}

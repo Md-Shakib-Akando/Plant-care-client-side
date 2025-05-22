@@ -9,7 +9,7 @@ const Details = () => {
     return (
         <>
             <div className='min-h-[calc(100vh-210px)]'>
-                <div className=" max-w-6xl mx-auto my-10 md:mt-20  p-6  bg-white border-1 border-gray-300 shadow-xl rounded-2xl">
+                <div className=" max-w-6xl mx-auto my-10 md:mt-20  p-6   border-1 border-gray-300 shadow-xl rounded-2xl">
                 <div className="flex flex-col md:flex-row gap-8 lg:gap-24">
                     
                     <div className="w-full md:w-3/4 ">
@@ -24,27 +24,27 @@ const Details = () => {
                     <div className="md:w-1/2 space-y-2 md:space-y-6">
                         <h2 className="text-3xl font-bold text-green-700">{PlantName}</h2>
 
-                        <p className="text-gray-600">
+                        <p >
                             <span className="font-semibold">Category:</span> {category}
                         </p>
 
-                        <p className="text-gray-600">
+                        <p >
                             <span className="font-semibold">Health Status:</span> {HealthStatus}
                         </p>
 
-                        <p className="text-gray-600">
+                        <p >
                             <span className="font-semibold">Watering Frequency:</span> {wateringFrequency}
                         </p>
 
-                        <p className="text-gray-600">
+                        <p >
                             <span className="font-semibold">Last Watered:</span> {lastWatered}
                         </p>
 
-                        <p className="text-gray-600">
+                        <p >
                             <span className="font-semibold">Next Watering:</span> {nextWatering}
                         </p>
 
-                        <p className="text-gray-600">
+                        <p >
                             <span className="font-semibold">Care Level:</span> {careLevel}
                         </p>
                     </div>
@@ -53,7 +53,7 @@ const Details = () => {
                 
                 <div className="mt-8">
                     <h3 className="text-xl font-semibold text-green-600 mb-2">Description :</h3>
-                    <p className="text-gray-700 leading-relaxed">{Description}</p>
+                    <p className=" leading-relaxed">{Description}</p>
                 </div>
             </div>
             </div>

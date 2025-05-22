@@ -20,8 +20,8 @@ const AllPlants = () => {
         <>
 
             <div className="overflow-x-auto min-h-[calc(100vh-144px)]">
-                <table className="min-w-full my-7 divide-y  divide-gray-200">
-                    <thead className="bg-gray-100 ">
+                <table className="min-w-full my-7 divide-y  divide-gray-300">
+                    <thead className="bg-base-300 ">
                         <tr >
                            
                             <th
