@@ -17,10 +17,10 @@ const Banner = () => {
                 slidesPerView={1}
                 className="h-full"
             >
-               
+
                 <SwiperSlide className="h-[400px] md:h-[500px] lg:h-[600px] xl:h-[700px]">
                     <div className="relative h-full w-full">
-                        
+
                         <div
                             className="absolute inset-0 bg-cover bg-center z-0"
                             style={{
@@ -28,20 +28,21 @@ const Banner = () => {
                             }}
                         ></div>
 
-                        
+
                         <div className="absolute inset-0 bg-gradient-to-r from-green-900/80 to-transparent z-10"></div>
 
-                        
+
                         <div className="relative z-20 flex h-full items-center px-4 sm:px-6 md:px-12 lg:px-20 xl:px-32">
                             <div className="w-full flex flex-col  justify-center items-center  text-white space-y-5 xl:space-y-7">
                                 <h1 className="text-center text-2xl sm:text-3xl md:text-4xl xl:text-5xl font-bold leading-tight">
-                                    Grow Happier, Healthier Plants
+                                    Master Plant Care
                                 </h1>
                                 <p className="text-center text-base sm:text-lg md:text-xl">
-                                    Simplify plant care with reminders, schedules, and a dashboard made just for plant lovers.
+                                    Never miss a watering day with our smart tracking system
+                                    that reminds you when your plants need attention.
                                 </p>
                                 <div>
-                                     <button className="bg-white/10 hover:bg-green-600 cursor-pointer border border-white hover:border-green-600 text-white  px-6 py-3 rounded-md font-medium transition duration-300">
+                                    <button className="bg-white/10 hover:bg-green-600 cursor-pointer border border-white hover:border-green-600 text-white  px-6 py-3 rounded-md font-medium transition duration-300">
                                         Plant Care Guide
                                     </button>
                                 </div>
@@ -51,7 +52,7 @@ const Banner = () => {
                 </SwiperSlide>
                 <SwiperSlide className="h-[400px] md:h-[500px] lg:h-[600px] xl:h-[700px]">
                     <div className="relative h-full w-full">
-                        
+
                         <div
                             className="absolute inset-0 bg-cover bg-center z-0"
                             style={{
@@ -59,12 +60,12 @@ const Banner = () => {
                             }}
                         ></div>
 
-                        
+
                         <div className="absolute inset-0 bg-gradient-to-r from-green-900/80 to-transparent z-10"></div>
 
-                        
+
                         <div className="relative z-20 flex h-full items-center px-4 sm:px-6 md:px-12 lg:px-20 xl:px-32">
-                             <div className="w-full flex flex-col  justify-center items-center  text-white space-y-5 xl:space-y-7">
+                            <div className="w-full flex flex-col  justify-center items-center  text-white space-y-5 xl:space-y-7">
                                 <h1 className="text-center text-2xl sm:text-3xl md:text-4xl xl:text-5xl font-bold leading-tight">
                                     Grow Happier, Healthier Plants
                                 </h1>
@@ -82,7 +83,7 @@ const Banner = () => {
                 </SwiperSlide>
                 <SwiperSlide className="h-[400px] md:h-[500px] lg:h-[600px] xl:h-[700px]">
                     <div className="relative h-full w-full">
-                        
+
                         <div
                             className="absolute inset-0 bg-cover bg-center z-0"
                             style={{
@@ -90,17 +91,18 @@ const Banner = () => {
                             }}
                         ></div>
 
-                        
+
                         <div className="absolute inset-0 bg-gradient-to-r from-green-900/80 to-transparent z-10"></div>
 
-                        
+
                         <div className="relative z-20 flex h-full items-center px-4 sm:px-6 md:px-12 lg:px-20 xl:px-32">
-                             <div className="w-full flex flex-col  justify-center items-center  text-white space-y-5 xl:space-y-7">
+                            <div className="w-full flex flex-col  justify-center items-center  text-white space-y-5 xl:space-y-7">
                                 <h1 className="text-center text-2xl sm:text-3xl md:text-4xl xl:text-5xl font-bold leading-tight">
-                                    Grow Happier, Healthier Plants
+                                    Bring Nature Indoors
                                 </h1>
                                 <p className="text-center text-base sm:text-lg md:text-xl">
-                                    Simplify plant care with reminders, schedules, and a dashboard made just for plant lovers.
+                                    Discover the joy of plant parenthood with our
+                                    comprehensive care guides and tracking tools.
                                 </p>
                                 <div>
                                     <button className="bg-white/10 hover:bg-green-600 cursor-pointer border border-white hover:border-green-600 text-white  px-6 py-3 rounded-md font-medium transition duration-300">
