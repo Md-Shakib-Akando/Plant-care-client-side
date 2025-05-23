@@ -4,6 +4,7 @@ import { AuthContext } from '../AuthContext';
 import { MdDelete } from "react-icons/md";
 import { MdEdit } from "react-icons/md";
 import Swal from 'sweetalert2';
+import { format } from 'date-fns';
 
 
 const MyPlants = () => {
@@ -28,7 +29,7 @@ const MyPlants = () => {
             if (result.isConfirmed) {
 
 
-                fetch(`http://localhost:3000/plants/${_id}`, {
+                fetch(`https://plant-care-server-seven.vercel.app/plants/${_id}`, {
                     method: "DELETE"
                 })
                     .then(res => res.json())
@@ -62,8 +63,13 @@ const MyPlants = () => {
                     ) : (
                         <div className=' grid grid-cols-1 xl:grid-cols-2 gap-5 lg:gap-8'>
                             {
-                                userPlants.map(plant =>
-                                    <div key={plant._id}>
+                                userPlants.map(plant =>{
+                                    const formattedNextWatering = plant.nextWatering
+                                ? format(new Date(plant.nextWatering), 'dd/MM/yyyy')
+                                : 'N/A';
+                                
+                                    return(
+                                        <div key={plant._id}>
                                         <div className="flex flex-col gap-5 sm:flex-row sm:gap-16 p-4  md:p-5 sm:items-center border-1 border-gray-300 rounded-xl shadow-sm">
                                             <figure className='sm:w-1/2 '>
                                                 <img
@@ -75,7 +81,7 @@ const MyPlants = () => {
                                                 <h2 className="card-title font-bold">{plant.PlantName}</h2>
                                                 <p><span className='font-semibold'>Category : </span>{plant.category}</p>
                                                 <p><span className='font-semibold'>Care Level: </span>{plant.careLevel}</p>
-                                                <p><span className='font-semibold'>Next Watering: </span>{plant.nextWatering}</p>
+                                                <p><span className='font-semibold'>Next Watering: </span>{formattedNextWatering}</p>
                                                 <p><span className='font-semibold'>Watering: </span> {plant.wateringFrequency}</p>
                                                 <p><span className='font-semibold'>Health: </span>{plant.HealthStatus}</p>
 
@@ -98,7 +104,8 @@ const MyPlants = () => {
                                             </div>
                                         </div>
                                     </div>
-                                )
+                                    )
+                                })
                             }
                         </div>
                     )

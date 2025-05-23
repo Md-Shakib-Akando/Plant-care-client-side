@@ -11,7 +11,7 @@ const AddPlants = () => {
         const formData = new FormData(form);
         const PlantData = Object.fromEntries(formData.entries());
 
-        fetch('http://localhost:3000/plants', {
+        fetch('https://plant-care-server-seven.vercel.app/plants', {
             method: 'POST',
             headers: {
                 "content-type": 'application/json'
@@ -67,7 +67,7 @@ const AddPlants = () => {
 
                             <div className="flex flex-col w-xs lg:w-md     p-4">
                                 <label className="label">Plant Name</label>
-                                <input type="text" name='PlantName' className="input w-full" placeholder="enter your plant name" />
+                                <input type="text" name='PlantName' required className="input w-full" placeholder="enter your plant name" />
 
                             </div>
                             <div className="form-control flex flex-col w-full p-4">
@@ -83,7 +83,7 @@ const AddPlants = () => {
                             </div>
                             <div className="flex flex-col w-xs lg:w-md  p-4">
                                 <label className="label">Description</label>
-                                <input type="text" name='Description' className="input w-full" placeholder="My awesome page" />
+                                <input type="text" required name='Description' className="input w-full" placeholder="My awesome page" />
 
                             </div>
                             <div className="form-control flex flex-col w-full p-4">
@@ -99,29 +99,29 @@ const AddPlants = () => {
                             </div>
                             <div className=" flex flex-col w-xs lg:w-md  p-4">
                                 <label className="label">Last Watered Date</label>
-                                <input type="date" name='lastWatered' className="input w-full" placeholder="enter last date" />
+                                <input type="date" name='lastWatered' required className="input w-full" placeholder="enter last date" />
 
                             </div>
                             <div className=" flex flex-col w-xs lg:w-md  p-4">
                                 <label className="label">Next Watering Date</label>
-                                <input type="date" name='nextWatering' className="input w-full" placeholder="enter next date" />
+                                <input type="date" name='nextWatering' required className="input w-full" placeholder="enter next date" />
 
                             </div>
                             <div className="   flex flex-col w-xs lg:w-md    p-4">
                                 <label className="label">Watering Frequency</label>
-                                <input type="text" name='wateringFrequency' className="input w-full" placeholder="every 3days weekly" />
+                                <input type="text" name='wateringFrequency' required className="input w-full" placeholder="every 3days weekly" />
 
                             </div>
                             <div className="   flex flex-col w-xs lg:w-md    p-4">
                                 <label className="label">Health Status</label>
-                                <input type="text" name='HealthStatus' className="input w-full" placeholder="enter health" />
+                                <input type="text" name='HealthStatus' required className="input w-full" placeholder="enter health" />
 
                             </div>
 
                         </div>
                         <div className=" flex flex-col    p-4">
                             <label className="label">Image</label>
-                            <input type="text" name='image' className="input w-full" placeholder="enter your plant image url" />
+                            <input type="text" name='image' required className="input w-full" placeholder="enter your plant image url" />
 
                         </div>
 

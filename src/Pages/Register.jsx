@@ -45,7 +45,7 @@ const Register = () => {
             .then(result => {
                 const user = result.user;
                 setUser(user);
-                fetch('http://localhost:3000/users', {
+                fetch('https://plant-care-server-seven.vercel.app/users', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'
@@ -56,7 +56,7 @@ const Register = () => {
                 updateProfile(result.user, { displayName: name, photoURL: photo })
                     .then(() => {
                         setUser({ ...result.user, displayName: name, photoURL: photo });
-                        console.log(result.user);
+                        navigate(`${location.state ? location.state : '/'}`);
                         Swal.fire({
 
                             icon: "success",
@@ -64,7 +64,7 @@ const Register = () => {
                             showConfirmButton: false,
                             timer: 1500
                         });
-                        navigate(`${location.state ? location.state : '/'}`);
+                        
 
                     })
                     .catch(error => {
@@ -85,21 +85,21 @@ const Register = () => {
 return (
     <>
 
-        <div className=" min-h-[calc(100vh-144px)]  bg-gray-100">
-            <div className="flex w-full items-center justify-center  bg-white shadow-lg rounded-lg overflow-hidden my-5 lg:my-0">
+        <div className=" min-h-[calc(100vh-144px)]  ">
+            <div className="flex w-full min-h-[calc(100vh-144px)] items-center justify-center   shadow-lg rounded-lg overflow-hidden my-5 lg:my-0">
 
                 <div className="hidden lg:block w-1/2 relative">
                     <img
                         src={Img}
                         alt="Register"
-                        className="  w-full h-[795px]  object-cover"
+                        className="  w-full h-[800px]  object-cover"
                     />
 
                 </div>
 
 
                 <div className="w-full h-full mx-auto lg:w-1/2 p-8 md:p-12">
-                    <h3 className="text-2xl font-bold text-gray-800 mb-6">Create Account</h3>
+                    <h3 className="text-2xl font-bold text-base-content mb-6">Create an Account</h3>
 
                     <form onSubmit={handleSingUp} className="space-y-6">
                         <div>

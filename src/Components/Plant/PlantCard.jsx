@@ -4,8 +4,8 @@ import { Link } from 'react-router';
 
 const PlantCard = ({plant}) => {
     const {_id,PlantName,image,wateringFrequency,category,HealthStatus,nextWatering,lastWatered,careLevel}= plant;
-    const formattedDate1 = format(new Date(nextWatering), 'dd/MM/yyyy');
-    const formattedDate2 = format(new Date(lastWatered), 'dd/MM/yyyy');
+      const formattedDate1 = nextWatering ? format(new Date(nextWatering), 'dd/MM/yyyy') : 'N/A';
+  const formattedDate2 = lastWatered ? format(new Date(lastWatered), 'dd/MM/yyyy') : 'N/A';
     return (
         <>
             <tbody className="bg-base-200 divide-y divide-gray-200">

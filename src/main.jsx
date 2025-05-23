@@ -14,30 +14,32 @@ import AddPlants from './Pages/AddPlants.jsx';
 import MyPlants from './Pages/MyPlants.jsx';
 import Login from './Pages/Login.jsx';
 import Register from './Pages/Register.jsx';
-import AllPlants from './Pages/AllPlants.jsx';
+
 import AuthProvider from './AuthProvider.jsx';
 import Details from './Pages/Details.jsx';
 import PrivateRout from './PrivateRout/PrivateRout.jsx';
 import PlantUpdate from './Pages/PlantUpdate.jsx';
 import Loading from './Components/Loading.jsx';
+import ErrorPage from './Pages/ErrorPage.jsx';
+import AllPlant from './Pages/AllPlant.jsx';
 
 const router = createBrowserRouter([
   {
     path: "/",
     Component:MainLayout,
+    errorElement:<ErrorPage></ErrorPage>,
     children:[
       {
         index:true,
-        loader:()=>fetch('http://localhost:3000/latest-plants'),
+        loader:()=>fetch('https://plant-care-server-seven.vercel.app/latest-plants'),
         hydrateFallbackElement:<Loading></Loading>,
        Component:Home,
 
       },
       {
-        path:'All-Plants',
-        //  loader: () => fetch('http://localhost:3000/plants-sorted'),
-        //  hydrateFallbackElement:<Loading></Loading>,
-         Component:AllPlants,
+        path:'AllPlants',
+        
+        Component:AllPlant,
       },
       {
         path:'Add-Plants',
@@ -49,7 +51,7 @@ const router = createBrowserRouter([
       },
       {
         path:'My-Plants',
-        loader: () => fetch('http://localhost:3000/plants').then(res => res.json()),
+        loader: () => fetch('https://plant-care-server-seven.vercel.app/plants').then(res => res.json()),
         hydrateFallbackElement:<Loading></Loading>,
          element:(
           <PrivateRout>
@@ -70,12 +72,12 @@ const router = createBrowserRouter([
             <Details></Details>
           </PrivateRout>
         ),
-        loader:()=>fetch('http://localhost:3000/plants'),
+        loader:()=>fetch('https://plant-care-server-seven.vercel.app/plants'),
         hydrateFallbackElement:<Loading></Loading>,
       },
       {
         path:'/updatePlant/:id',
-        loader: ({params})=>fetch(`http://localhost:3000/plants/${params.id}`),
+        loader: ({params})=>fetch(`https://plant-care-server-seven.vercel.app/plants/${params.id}`),
         hydrateFallbackElement:<Loading></Loading>,
         Component:PlantUpdate,
       }

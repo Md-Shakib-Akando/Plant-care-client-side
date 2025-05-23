@@ -34,7 +34,7 @@ const Footer = () => {
                     <div className="mb-4 md:mb-0">
                         <h1 className='text-xl font-semibold mb-2'>Quick Link</h1>
                         <NavLink to='/' ><li className='px-2 py-1 list-none rounded-sm'>Home</li></NavLink>
-                        <NavLink to='All-Plants' ><li className='px-2 py-1 list-none rounded-sm'>All-Plants</li></NavLink>
+                        <NavLink to='AllPlants' ><li className='px-2 py-1 list-none rounded-sm'>All-Plants</li></NavLink>
                         <NavLink to='Add-Plants' ><li className='px-2 py-1 list-none rounded-sm'>Add-Plants</li></NavLink>
                         <NavLink to='My-Plants' ><li className='px-2 py-1 list-none rounded-sm'>My-Plants</li></NavLink>
                     </div>

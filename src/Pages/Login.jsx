@@ -1,21 +1,21 @@
-import React, { use, useEffect } from 'react';
+import React, { use, useEffect, useState } from 'react';
 import Img from '../assets/RegisterImg.jpg';
 import { Link, useLocation, useNavigate } from 'react-router';
 import { AuthContext } from '../AuthContext';
 import Swal from 'sweetalert2';
 import { FcGoogle } from 'react-icons/fc';
 const Login = () => {
-    const { userLogIn, setLoading, setUser, handleGoogle } = use(AuthContext);
+    const { userLogIn, setLoading, setUser, handleGoogle,resetPassword } = use(AuthContext);
     const location = useLocation();
     const navigate = useNavigate();
-
+     const [loginEmail, setLoginEmail] = useState("");
     const handleGoogleSingIn = () => {
         handleGoogle()
             .then(result => {
                 const user = result.user;
 
                 setUser(user)
-
+                  navigate(`${location.state ? location.state : '/'}`);
                 Swal.fire({
 
                     icon: "success",
@@ -23,7 +23,7 @@ const Login = () => {
                     showConfirmButton: false,
                     timer: 1500
                 });
-                navigate(`${location.state ? location.state : '/'}`);
+              
             }).catch(error => {
                 console.log(error)
             })
@@ -61,19 +61,54 @@ const Login = () => {
             }).finally(() => setLoading(false));
 
     }
+    const handleForgotPass=()=>{
+         if (!loginEmail) {
+            Swal.fire({
+                icon: "warning",
+                title: "Email Required",
+                text: "Please enter your email in the login field first.",
+                showConfirmButton: false,
+                timer: 1500
+            });
+            return;
+        }
+
+        setLoading(true);
+        resetPassword(loginEmail)
+            .then(() => {
+                Swal.fire({
+                    icon: "success",
+                    title: "Reset link sent!",
+                    text: "Please check your email.",
+                    showConfirmButton: false,
+                    timer: 1500,
+                });
+            })
+            .catch(error => {
+                console.error(error);
+                Swal.fire({
+                    icon: "error",
+                    title: "Error",
+                    text: "Failed to send reset link. Try again.",
+                    showConfirmButton: false,
+                    timer: 1500,
+                });
+            })
+            .finally(() => setLoading(false));
+    }
     useEffect(() => {
         document.title = 'PlantCare | Login';
     }, [])
     return (
         <>
-            <div className=" min-h-[calc(100vh-144px)]  bg-gray-100">
-                <div className="flex min-h-[calc(100vh-144px)]  w-full items-center justify-center  bg-white shadow-lg rounded-lg overflow-hidden my-5 lg:my-0 ">
+            <div className=" min-h-[calc(100vh-144px)]  ">
+                <div className="flex min-h-[calc(100vh-144px)]  w-full items-center justify-center   shadow-lg rounded-lg overflow-hidden my-5 lg:my-0 ">
 
                     <div className="hidden lg:block w-1/2 relative">
                         <img
                             src={Img}
                             alt="Register"
-                            className="  w-full h-[775px]  object-cover"
+                            className="  w-full h-[800px]  object-cover"
                         />
 
 
@@ -81,7 +116,7 @@ const Login = () => {
 
 
                     <div className="w-full h-full mx-auto lg:w-1/2 p-8 md:p-12">
-                        <h3 className="text-2xl font-bold text-gray-800 mb-6">SIGN IN</h3>
+                        <h3 className="text-2xl font-bold text-base-content mb-6">SIGN IN</h3>
 
                         <form onSubmit={handleLogIn} className="space-y-6">
 
@@ -91,6 +126,8 @@ const Login = () => {
                                 <input
                                     type="email"
                                     name='email'
+                                    value={loginEmail}
+                                    onChange={(e) => setLoginEmail(e.target.value)}
                                     className="w-full px-4 py-3 border rounded-lg"
                                     placeholder="Enter your email"
                                     required
@@ -116,13 +153,14 @@ const Login = () => {
                                     />
                                     <label
                                         htmlFor="remember-me"
-                                        className="ml-2 block text-sm text-gray-700"
+                                        className="ml-2 block text-sm text-base-content"
                                     >
                                         Remember me
                                     </label>
                                 </div>
                                 <button
                                     type="button"
+                                    onClick={handleForgotPass}
                                     className="text-sm cursor-pointer text-green-600 hover:text-green-500"
                                 >
                                     Forgot password?

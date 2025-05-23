@@ -1,26 +1,34 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 
 import PlantCard from '../Components/Plant/PlantCard';
+import { AuthContext } from '../AuthContext';
+import Loading from '../Components/Loading';
 
-const AllPlants = () => {
-   
+const AllPlant = () => {
+    const { loading } = useContext(AuthContext);
     const [plants, setPlants] = useState([]);
     const [sortBy, setSortBy] = useState("");
+
+
+
     useEffect(() => {
         document.title = 'PlantCare | AllPlant';
     }, [])
     useEffect(() => {
         const url = sortBy
-            ? `http://localhost:3000/plants-sorted?sortBy=${sortBy}`
-            : `http://localhost:3000/plants`;
-            
- 
+            ? `https://plant-care-server-seven.vercel.app/plants-sorted?sortBy=${sortBy}`
+            : `https://plant-care-server-seven.vercel.app/plants`;
+
+
         fetch(url)
             .then(res => res.json())
             .then(data => setPlants(data))
             .catch(err => console.error(err));
     }, [sortBy]);
 
+    if (loading) {
+        return <Loading />;
+    }
 
 
     return (
@@ -108,4 +116,4 @@ const AllPlants = () => {
     );
 };
 
-export default AllPlants;
+export default AllPlant;
