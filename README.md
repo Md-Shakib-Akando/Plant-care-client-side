@@ -6,7 +6,7 @@ Plant Care web app
 
  https://plants-care-cb29c.web.app
 
-## Purpose:
+## Project Overview:
 
 **Plant Care Tracker** is a full-stack web application designed to help users manage their indoor and outdoor plants. And detailed plant care info, it's your smart assistant for keeping your greenery healthy.
 
@@ -22,7 +22,7 @@ Plant Care web app
 
 📱 Mobile-Responsive Interface – Seamless user experience across all devices using Tailwind CSS.
 
-## 📦 NPM Packages Used
+## 📦 Technology Used
 
 - **React**
 - **React Router**
@@ -35,3 +35,46 @@ Plant Care web app
 - **Sweealert2**
 - **React tooltip**
 - **Date fns**
+
+## 📦 Dependencies
+```
+
+{
+  "@tailwindcss/vite": "^4.1.7",
+    "date-fns": "^4.1.0",
+    "firebase": "^11.7.3",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "react-icons": "^5.5.0",
+    "react-router": "^7.6.0",
+    "react-tooltip": "^5.28.1",
+    "sweetalert2": "^11.21.2",
+    "swiper": "^11.2.6",
+    "tailwindcss": "^4.1.7"
+}
+```
+## 📦 Run Locally:
+
+### 1. Clone the repository:
+```
+git clone https://github.com/your-username/your-project-name.git
+```
+
+### 2. Go to the project directory:
+```
+cd your-project-name
+```
+
+### 3. Install dependencies :
+```
+npm install
+```
+
+### 4. Install dependencies
+```
+npm run dev
+```
+## 🔗 server-side-repo link:
+
+ https://plants-care-cb29c.web.app
+
