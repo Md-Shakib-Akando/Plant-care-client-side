@@ -76,5 +76,4 @@ npm run dev
 ```
 ## 🔗 server-side-repo link:
 
- https://plants-care-cb29c.web.app
-
+https://github.com/Md-Shakib-Akando/Plant-care-server-side
