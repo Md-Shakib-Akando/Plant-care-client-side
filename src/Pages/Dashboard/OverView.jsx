@@ -61,26 +61,26 @@ const OverView = () => {
 
             
             <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-6'>
-                <div className='p-6 shadow-md rounded-md flex justify-between border border-base-200 items-center'>
+                <div className='p-8 shadow-md rounded-md flex justify-between border border-base-200 items-center'>
                     <div>
                         <h1 className='text-xl font-semibold'>Total Users</h1>
-                        <p className='text-lg font-medium mt-2'>{userData.length}</p>
+                        <p className='text-lg font-medium mt-4'>{userData.length}</p>
                     </div>
-                    <RxBarChart size={32} className='text-[#6366F1]' />
+                    <RxBarChart size={72} className='text-[#6366F1]' />
                 </div>
-                <div className='p-6 shadow-md rounded-md flex justify-between border border-base-200 items-center'>
+                <div className='p-8 shadow-md rounded-md flex justify-between border border-base-200 items-center'>
                     <div>
                         <h1 className='text-xl font-semibold'>All Plants</h1>
-                        <p className='text-lg font-medium mt-2'>{plants.length}</p>
+                        <p className='text-lg font-medium mt-4'>{plants.length}</p>
                     </div>
-                    <RxBarChart size={32} className='text-[#F59E0B]' />
+                    <RxBarChart size={72} className='text-[#F59E0B]' />
                 </div>
-                <div className='p-6 shadow-md rounded-md flex justify-between border border-base-200 items-center'>
+                <div className='p-8 shadow-md rounded-md flex justify-between border border-base-200 items-center'>
                     <div>
                         <h1 className='text-xl font-semibold'>My Plants</h1>
-                        <p className='text-lg font-medium mt-2'>{myPlants.length}</p>
+                        <p className='text-lg font-medium mt-4'>{myPlants.length}</p>
                     </div>
-                    <RxBarChart size={32} className='text-[#EF4444]' />
+                    <RxBarChart size={72} className='text-[#EF4444]' />
                 </div>
             </div>
 

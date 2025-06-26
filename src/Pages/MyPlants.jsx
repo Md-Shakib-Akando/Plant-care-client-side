@@ -87,7 +87,7 @@ const MyPlants = () => {
 
                                                 <div className=" space-x-8 ">
                                                     <Link to={`/updatePlant/${plant._id}`}>
-                                                        <button className='btn text-blue-500 border-blue-500 hover:bg-blue-500 hover:text-white '>
+                                                        <button className='btn text-green-600 border-green-600 hover:bg-green-600 hover:text-white '>
                                                             <MdEdit size={32} />
 
                                                         </button>

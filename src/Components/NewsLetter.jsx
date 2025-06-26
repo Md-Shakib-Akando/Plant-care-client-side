@@ -1,9 +1,22 @@
 import React from 'react';
+import Swal from 'sweetalert2';
 
 const NewsLetter = () => {
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "Subscription successful!",
+            showConfirmButton: false,
+            timer: 1500,
+        });
+        e.target.reset();
+    };
     return (
         <>
-            <div className="bg-green-600 rounded-lg p-8 text-white">
+            <div className="bg-green-600 rounded-lg p-8 mb-8 text-white">
                 <div className="md:flex items-center justify-between">
                     <div className="md:w-1/2 mb-6 md:mb-0">
                         <h2 className="text-2xl font-bold mb-2">
@@ -15,9 +28,10 @@ const NewsLetter = () => {
                         </p>
                     </div>
                     <div className="md:w-1/2">
-                        <form className="flex flex-col sm:flex-row gap-2">
+                        <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-2">
                             <input
                                 type="email"
+                                required
                                 placeholder="Your email address"
                                 className="flex-grow px-4 py-3 bg-white rounded-md text-gray-900 border-none focus:outline-none focus:ring-2 focus:ring-green-300"
                             />

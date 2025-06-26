@@ -110,7 +110,7 @@ const MyPlantData = ({ plant ,setUserPlants}) => {
                     <td className="px-6 py-4 text-center whitespace-nowrap">
                         <div className=" space-x-8 ">
                             <Link to={`/dashBoard/plantUP/${plant._id}`}>
-                                <button className='btn text-blue-500 border-blue-500 hover:bg-blue-500 hover:text-white '>
+                                <button className='btn text-green-600 border-green-600 hover:bg-green-600 hover:text-white '>
                                     <MdEdit size={32} />
 
                                 </button>
