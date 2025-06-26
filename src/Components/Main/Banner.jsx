@@ -6,6 +6,7 @@ import 'swiper/css/pagination';
 import Img1 from '../../assets/SlideImg1.jpg'
 import Img2 from '../../assets/SlideImg2.jpg'
 import Img3 from '../../assets/SlideImg3.jpg'
+import { Link } from 'react-router';
 const Banner = () => {
     return (
         <div className=" rounded-lg overflow-hidden shadow-lg h-[calc(100vh-144px)]">
@@ -42,9 +43,11 @@ const Banner = () => {
                                     that reminds you when your plants need attention.
                                 </p>
                                 <div>
+                                    <Link to='/AllPlants'>
                                     <button className="bg-white/10 hover:bg-green-600 cursor-pointer border border-white hover:border-green-600 text-white  px-6 py-3 rounded-md font-medium transition duration-300">
-                                        Plant Care Guide
+                                        Explore Plants
                                     </button>
+                                    </Link>
                                 </div>
                             </div>
                         </div>
@@ -73,9 +76,11 @@ const Banner = () => {
                                     Simplify plant care with reminders, schedules, and a dashboard made just for plant lovers.
                                 </p>
                                 <div>
+                                     <Link to='/AllPlants'>
                                     <button className="bg-white/10 hover:bg-green-600 cursor-pointer border border-white hover:border-green-600 text-white  px-6 py-3 rounded-md font-medium transition duration-300">
-                                        Plant Care Guide
+                                        Explore Plants
                                     </button>
+                                    </Link>
                                 </div>
                             </div>
                         </div>
@@ -105,9 +110,11 @@ const Banner = () => {
                                     comprehensive care guides and tracking tools.
                                 </p>
                                 <div>
+                                     <Link to='/AllPlants'>
                                     <button className="bg-white/10 hover:bg-green-600 cursor-pointer border border-white hover:border-green-600 text-white  px-6 py-3 rounded-md font-medium transition duration-300">
-                                        Plant Care Guide
+                                        Explore Plants
                                     </button>
+                                    </Link>
                                 </div>
                             </div>
                         </div>

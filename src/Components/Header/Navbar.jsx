@@ -54,7 +54,7 @@ const Navbar = () => {
     return (
         <>
 
-            <div className="bg-base-100 shadow-sm">
+            <div className="bg-base-100 shadow-sm sticky top-0 z-50">
                 <div className='navbar py-5 max-w-11/12 mx-auto'>
                     <div className="navbar-start space-x-0.5 ">
                         <img className='h-[50px] w-[50px]' src="/logo.png" alt="" />

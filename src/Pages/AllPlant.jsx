@@ -1,13 +1,13 @@
-import React, { useContext, useEffect, useState } from 'react';
-
-import PlantCard from '../Components/Plant/PlantCard';
-import { AuthContext } from '../AuthContext';
+import React, { useEffect, useState } from 'react';
 import Loading from '../Components/Loading';
+import { format } from 'date-fns';
+import { Link } from 'react-router';
 
 const AllPlant = () => {
-    const { loading } = useContext(AuthContext);
+
     const [plants, setPlants] = useState([]);
     const [sortBy, setSortBy] = useState("");
+    const [loading, setLoading] = useState(false);
 
 
 
@@ -15,6 +15,7 @@ const AllPlant = () => {
         document.title = 'PlantCare | AllPlant';
     }, [])
     useEffect(() => {
+        setLoading(true)
         const url = sortBy
             ? `https://plant-care-server-seven.vercel.app/plants-sorted?sortBy=${sortBy}`
             : `https://plant-care-server-seven.vercel.app/plants`;
@@ -22,7 +23,11 @@ const AllPlant = () => {
 
         fetch(url)
             .then(res => res.json())
-            .then(data => setPlants(data))
+            .then(data => {
+                setPlants(data);
+                setLoading(false);
+            }
+            )
             .catch(err => console.error(err));
     }, [sortBy]);
 
@@ -33,8 +38,13 @@ const AllPlant = () => {
 
     return (
         <>
-
-            <div className="flex items-center justify-center mt-8">
+            <div className='flex flex-col justify-center items-center pt-10 pb-5 gap-4'>
+                <h1 className='text-4xl font-bold'>
+                    All Available Plants
+                </h1>
+                <p> Explore our full collection of healthy and beautiful plants.</p>
+            </div>
+            <div className="flex items-center justify-end mt-8">
                 <h1 className='text-xl font-semibold mr-5'>Sort by: </h1>
                 <select
                     value={sortBy}
@@ -50,67 +60,53 @@ const AllPlant = () => {
                 </select>
             </div>
 
-            <div className="overflow-x-auto min-h-[calc(100vh-144px)]">
-                <table className="min-w-full my-7 divide-y  divide-gray-300">
-                    <thead className="bg-base-300  ">
-                        <tr >
 
-                            <th
-                                scope="col"
-                                className="px-6 py-7 text-center  text-xs font-medium text-gray-500 uppercase tracking-wider"
-                            >
-                                Plant Name
-                            </th>
-                            <th
-                                scope="col"
-                                className="px-6 py-7 text-center text-xs font-medium text-gray-500 uppercase tracking-wider"
-                            >
-                                Category
-                            </th>
-                            <th
-                                scope="col"
-                                className="px-6 py-7 text-center text-xs font-medium text-gray-500 uppercase tracking-wider"
-                            >
-                                Care Level
-                            </th>
-                            <th
-                                scope="col"
-                                className="px-6 py-7 text-center text-xs font-medium text-gray-500 uppercase tracking-wider"
-                            >
-                                Last Watered
-                            </th>
-                            <th
-                                scope="col"
-                                className="px-6 py-7 text-center text-xs font-medium text-gray-500 uppercase tracking-wider"
-                            >
-                                Next Watering
-                            </th>
-                            <th
-                                scope="col"
-                                className="px-6 py-7 text-center text-xs font-medium text-gray-500 uppercase tracking-wider"
-                            >
-                                Water Frequency
-                            </th>
-                            <th
-                                scope="col"
-                                className="px-6 py-7 text-center text-xs font-medium text-gray-500 uppercase tracking-wider"
-                            >
-                                Health
-                            </th>
+            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 pb-5 gap-5  lg:gap-8'>
+                {
+                    plants.map(plant => {
+                        const formattedNextWatering = plant.nextWatering
+                            ? format(new Date(plant.nextWatering), 'dd/MM/yyyy')
+                            : 'N/A';
 
-                            <th
-                                scope="col"
-                                className="px-6 py-7 text-center text-xs font-medium text-gray-500 uppercase tracking-wider"
-                            >
+                        return (
+                            <div key={plant._id} className="flex flex-col gap-5  p-4 mt-3  md:p-5  border-1 border-gray-300 rounded-xl shadow-sm">
+                                <figure className=''>
+                                    <img
+                                        src={plant.image}
+                                        alt=""
+                                        className=' rounded-xl' />
+                                </figure>
+                                <div className=' px-2'>
+                                    <div className='flex justify-between mb-3'>
+                                        <h2 className="card-title font-bold">{plant.PlantName}</h2>
 
-                            </th>
-                        </tr>
-                    </thead>
-                    {
-                        plants.map(plant => <PlantCard key={plant._id} plant={plant}></PlantCard>)
-                    }
-                </table>
+                                        <p className='bg-green-300 py-1 px-2 rounded-full'>{plant.HealthStatus}</p>
+                                    </div>
+                                    <p><span className='font-semibold'>Category : </span>{plant.category}</p>
+                                    <p><span className='font-semibold'>CareLevel : </span>{plant.careLevel}</p>
+
+                                    <p className='mb-2'><span className='font-semibold '>Next Watering: </span>{formattedNextWatering}</p>
+
+                                    <p className='font-semibold'>Description : </p>
+                                    <p className='mb-2'>
+                                        {plant.Description.length > 60
+                                            ? `${plant.Description.substring(0, 60)}...`
+                                            : plant.Description}
+                                        <Link to={`/details/${plant._id}`}>
+                                            <button className=" text-green-600 hover:text-green-900 mr-3 cursor-pointer  whitespace-nowrap">
+                                                See More
+                                            </button>
+                                        </Link>
+                                    </p>
+
+
+                                </div>
+                            </div>
+                        )
+                    })
+                }
             </div>
+
 
         </>
     );
