@@ -9,7 +9,7 @@ import Img3 from '../../assets/SlideImg3.jpg'
 import { Link } from 'react-router';
 const Banner = () => {
     return (
-        <div className=" rounded-lg overflow-hidden shadow-lg h-[calc(100vh-144px)]">
+        <div className=" rounded-lg overflow-hidden shadow-lg h-[70vh]">
             <Swiper
                 modules={[Pagination, Autoplay]}
                 pagination={{ clickable: true }}

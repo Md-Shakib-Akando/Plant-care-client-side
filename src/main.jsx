@@ -22,6 +22,12 @@ import PlantUpdate from './Pages/PlantUpdate.jsx';
 import Loading from './Components/Loading.jsx';
 import ErrorPage from './Pages/ErrorPage.jsx';
 import AllPlant from './Pages/AllPlant.jsx';
+import Dashboard from './Pages/Dashboard.jsx';
+import AllPlants from './Pages/Dashboard/AllPlants.jsx';
+import MyPlant from './Pages/Dashboard/MyPlant.jsx';
+import AddPlant from './Pages/Dashboard/AddPlant.jsx';
+import OverView from './Pages/Dashboard/OverView.jsx';
+import PlantUP from './Pages/Dashboard/PlantUP.jsx';
 
 const router = createBrowserRouter([
   {
@@ -83,6 +89,42 @@ const router = createBrowserRouter([
       }
     ]
   },
+  {
+    path:'/dashBoard',
+    element:(
+      <PrivateRout>
+        <Dashboard></Dashboard>
+      </PrivateRout>
+    ),
+    children:[
+      {
+        index:true,
+        loader: () => fetch('https://plant-care-server-seven.vercel.app/users'),
+        hydrateFallbackElement:<Loading></Loading>,
+         Component:OverView,
+      },
+      {
+        path:'allPlants',
+        Component:AllPlants,
+      },
+      {
+        path:'myPlant',
+        loader: () => fetch('https://plant-care-server-seven.vercel.app/plants').then(res => res.json()),
+        hydrateFallbackElement:<Loading></Loading>,
+        Component:MyPlant,
+      },
+      {
+        path:'addPlant',
+        Component:AddPlant,
+      },
+      {
+        path:'plantUP/:id',
+        loader: ({params})=>fetch(`https://plant-care-server-seven.vercel.app/plants/${params.id}`),
+        hydrateFallbackElement:<Loading></Loading>,
+        Component:PlantUP,
+      }
+    ]
+  }
 ]);
 
 createRoot(document.getElementById('root')).render(
