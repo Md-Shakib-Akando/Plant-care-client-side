@@ -38,9 +38,7 @@ import React from 'react';
 const BlogSection = () => {
     return (
         <section className="mb-10">
-          <h2 className="text-4xl font-bold text-center text-gray-800 mb-8">
-            Latest Blog Posts
-          </h2>
+          <h1 className='text-4xl text-center font-bold mb-8'>Latest Blog</h1>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {blogPosts.map((post) => (
