@@ -1,6 +1,8 @@
 ## Project Name:
 Plant Care web app
 
+![PlantCare Screenshot](https://i.ibb.co.com/JjHqF9gX/Screenshot-2025-05-24-233909.png)
+
 
 ## 🔗 Live URL:
 
